@@ -91,9 +91,7 @@ namespace MobiriseSanitizer.Classes
         /// <param name="valueShort">Replacement value for short tokens such as "mbr".</param>
         /// <param name="valueLong">Replacement value for long tokens such as "mobirise" and "mobi".</param>
         /// <param name="deleteProjectFile">If true, deletes the "project.mobirise" file if present.</param>
-        /// <param name="antiDragImg">
-        /// If true, ensures that each &lt;img&gt; tag has <c>draggable="false"</c> when the attribute is missing.
-        /// </param>
+        /// <param name="antiDragImg">If true, ensures that each <img> tag has draggable="false" when the attribute is missing.</param>
         public static void CleanFiles(
             string projPath,
             string valueShort,
