@@ -48,6 +48,7 @@ namespace MobiriseSanitizer.Classes
                 "Free AI Website Creator</a>",
                 "No Code Website Builder</a>",
                 "AI Website Builder</a>",
+                "Best AI Website Creator</a>",
                 "Mobirise.com </a>"
             };
 
