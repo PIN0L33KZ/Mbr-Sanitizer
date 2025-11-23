@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace MobiriseSanitizer.Classes
@@ -63,13 +60,13 @@ namespace MobiriseSanitizer.Classes
                 throw new IOException($"Failed to enumerate HTML files in '{projPath}'.", ex);
             }
 
-            foreach(var file in htmlFiles)
+            foreach(string file in htmlFiles)
             {
                 try
                 {
-                    var fileLines = File.ReadAllLines(file);
+                    string[] fileLines = File.ReadAllLines(file);
 
-                    var cleaned = fileLines
+                    string[] cleaned = fileLines
                         .Where(line => !removePatterns.Any(p =>
                             line.Contains(p, StringComparison.OrdinalIgnoreCase)))
                         .ToArray();
@@ -93,12 +90,7 @@ namespace MobiriseSanitizer.Classes
         /// <param name="valueLong">Replacement value for long tokens such as "mobirise" and "mobi".</param>
         /// <param name="deleteProjectFile">If true, deletes the "project.mobirise" file if present.</param>
         /// <param name="antiDragImg">If true, ensures that each <img> tag has draggable="false" when the attribute is missing.</param>
-        public static void CleanFiles(
-            string projPath,
-            string valueShort,
-            string valueLong,
-            bool deleteProjectFile,
-            bool antiDragImg)
+        public static void CleanFiles(string projPath, string valueShort, string valueLong, bool deleteProjectFile, bool antiDragImg)
         {
             if(string.IsNullOrWhiteSpace(projPath))
             {
@@ -138,7 +130,7 @@ namespace MobiriseSanitizer.Classes
                 throw new IOException($"Failed to enumerate HTML files recursively in '{projPath}'.", ex);
             }
 
-            foreach(var file in htmlFiles)
+            foreach(string file in htmlFiles)
             {
                 try
                 {
@@ -243,7 +235,7 @@ namespace MobiriseSanitizer.Classes
                 throw new IOException($"Failed to enumerate files in asset directory '{assetPath}'.", ex);
             }
 
-            foreach(var file in files)
+            foreach(string file in files)
             {
                 try
                 {
@@ -322,7 +314,7 @@ namespace MobiriseSanitizer.Classes
                 }
 
                 // Rename files in the current directory
-                foreach(var file in Directory.GetFiles(dir))
+                foreach(string file in Directory.GetFiles(dir))
                 {
                     try
                     {
@@ -345,7 +337,7 @@ namespace MobiriseSanitizer.Classes
                 }
 
                 // Process and potentially rename subdirectories
-                foreach(var subDir in Directory.GetDirectories(dir))
+                foreach(string subDir in Directory.GetDirectories(dir))
                 {
                     string dirName = Path.GetFileName(subDir);
 
@@ -423,7 +415,7 @@ namespace MobiriseSanitizer.Classes
                 throw new IOException($"Failed to enumerate HTML files recursively in '{projPath}'.", ex);
             }
 
-            foreach(var file in htmlFiles)
+            foreach(string file in htmlFiles)
             {
                 try
                 {
